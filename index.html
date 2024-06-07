@@ -1,0 +1,63 @@
+<head>
+  <style> body { margin: 0; } </style>
+
+  <script src="//unpkg.com/force-graph"></script>
+  <!--<script src="../../dist/force-graph.js"></script>-->
+</head>
+
+<body>
+  <div id="graph"></div>
+  <script>
+     // gen a number persistent color from around the palette
+    const getColor = n => '#' + ((n * 124680) % Math.pow(2, 24)).toString(16).padStart(6, '0');
+
+    const gData = 
+{"nodes": [{"id": "青花菜 $32.86", "group": 32.86},{"id": "花椰菜 $89.37", "group": 89.37},{"id": "胡瓜 $25.39", "group": 25.39},{"id": "絲瓜 $35.36", "group": 35.36},{"id": "扁蒲 $23.53", "group": 23.53},{"id": "茄子 $32.01", "group": 32.01},{"id": "番茄 $21.24", "group": 21.24},{"id": "甜椒 $66.54", "group": 66.54},{"id": "豌豆 $69.64", "group": 69.64},{"id": "毛豆 $65.23", "group": 65.23},{"id": "南瓜 $20.85", "group": 20.85},{"id": "辣椒 $50.89", "group": 50.89},{"id": "菜豆 $49.66", "group": 49.66},{"id": "金針花 $203.9", "group": 203.9}],"links": [{"source": "青花菜 $32.86", "target": "菜豆 $49.66", "value":49.66},{"source": "花椰菜 $89.37", "target": "胡瓜 $25.39", "value":25.39},{"source": "花椰菜 $89.37", "target": "青花菜 $32.86", "value":32.86},{"source": "胡瓜 $25.39", "target": "豌豆 $69.64", "value":69.64},{"source": "胡瓜 $25.39", "target": "青花菜 $32.86", "value":32.86},{"source": "胡瓜 $25.39", "target": "菜豆 $49.66", "value":49.66},{"source": "胡瓜 $25.39", "target": "花椰菜 $89.37", "value":89.37},{"source": "絲瓜 $35.36", "target": "茄子 $32.01", "value":32.01},{"source": "扁蒲 $23.53", "target": "毛豆 $65.23", "value":65.23},{"source": "扁蒲 $23.53", "target": "菜豆 $49.66", "value":49.66},{"source": "扁蒲 $23.53", "target": "青花菜 $32.86", "value":32.86},{"source": "扁蒲 $23.53", "target": "金針花 $203.9", "value":203.9},{"source": "扁蒲 $23.53", "target": "豌豆 $69.64", "value":69.64},{"source": "扁蒲 $23.53", "target": "南瓜 $20.85", "value":20.85},{"source": "扁蒲 $23.53", "target": "花椰菜 $89.37", "value":89.37},{"source": "扁蒲 $23.53", "target": "胡瓜 $25.39", "value":25.39},{"source": "扁蒲 $23.53", "target": "茄子 $32.01", "value":32.01},{"source": "扁蒲 $23.53", "target": "絲瓜 $35.36", "value":35.36},{"source": "茄子 $32.01", "target": "絲瓜 $35.36", "value":35.36},{"source": "茄子 $32.01", "target": "金針花 $203.9", "value":203.9},{"source": "番茄 $21.24", "target": "毛豆 $65.23", "value":65.23},{"source": "番茄 $21.24", "target": "菜豆 $49.66", "value":49.66},{"source": "番茄 $21.24", "target": "青花菜 $32.86", "value":32.86},{"source": "番茄 $21.24", "target": "金針花 $203.9", "value":203.9},{"source": "番茄 $21.24", "target": "豌豆 $69.64", "value":69.64},{"source": "番茄 $21.24", "target": "南瓜 $20.85", "value":20.85},{"source": "番茄 $21.24", "target": "花椰菜 $89.37", "value":89.37},{"source": "番茄 $21.24", "target": "胡瓜 $25.39", "value":25.39},{"source": "番茄 $21.24", "target": "茄子 $32.01", "value":32.01},{"source": "番茄 $21.24", "target": "絲瓜 $35.36", "value":35.36},{"source": "甜椒 $66.54", "target": "毛豆 $65.23", "value":65.23},{"source": "甜椒 $66.54", "target": "菜豆 $49.66", "value":49.66},{"source": "甜椒 $66.54", "target": "青花菜 $32.86", "value":32.86},{"source": "甜椒 $66.54", "target": "金針花 $203.9", "value":203.9},{"source": "甜椒 $66.54", "target": "豌豆 $69.64", "value":69.64},{"source": "甜椒 $66.54", "target": "南瓜 $20.85", "value":20.85},{"source": "甜椒 $66.54", "target": "花椰菜 $89.37", "value":89.37},{"source": "甜椒 $66.54", "target": "胡瓜 $25.39", "value":25.39},{"source": "甜椒 $66.54", "target": "茄子 $32.01", "value":32.01},{"source": "甜椒 $66.54", "target": "絲瓜 $35.36", "value":35.36},{"source": "豌豆 $69.64", "target": "青花菜 $32.86", "value":32.86},{"source": "豌豆 $69.64", "target": "菜豆 $49.66", "value":49.66},{"source": "毛豆 $65.23", "target": "茄子 $32.01", "value":32.01},{"source": "毛豆 $65.23", "target": "絲瓜 $35.36", "value":35.36},{"source": "毛豆 $65.23", "target": "金針花 $203.9", "value":203.9},{"source": "南瓜 $20.85", "target": "青花菜 $32.86", "value":32.86},{"source": "南瓜 $20.85", "target": "菜豆 $49.66", "value":49.66},{"source": "辣椒 $50.89", "target": "毛豆 $65.23", "value":65.23},{"source": "辣椒 $50.89", "target": "菜豆 $49.66", "value":49.66},{"source": "辣椒 $50.89", "target": "青花菜 $32.86", "value":32.86},{"source": "辣椒 $50.89", "target": "金針花 $203.9", "value":203.9},{"source": "辣椒 $50.89", "target": "豌豆 $69.64", "value":69.64},{"source": "辣椒 $50.89", "target": "南瓜 $20.85", "value":20.85},{"source": "辣椒 $50.89", "target": "花椰菜 $89.37", "value":89.37},{"source": "辣椒 $50.89", "target": "胡瓜 $25.39", "value":25.39},{"source": "辣椒 $50.89", "target": "茄子 $32.01", "value":32.01},{"source": "辣椒 $50.89", "target": "絲瓜 $35.36", "value":35.36},{"source": "菜豆 $49.66", "target": "毛豆 $65.23", "value":65.23},{"source": "菜豆 $49.66", "target": "菜豆 $49.66", "value":49.66},{"source": "菜豆 $49.66", "target": "青花菜 $32.86", "value":32.86},{"source": "菜豆 $49.66", "target": "金針花 $203.9", "value":203.9},{"source": "菜豆 $49.66", "target": "豌豆 $69.64", "value":69.64},{"source": "菜豆 $49.66", "target": "南瓜 $20.85", "value":20.85},{"source": "菜豆 $49.66", "target": "花椰菜 $89.37", "value":89.37},{"source": "菜豆 $49.66", "target": "胡瓜 $25.39", "value":25.39},{"source": "菜豆 $49.66", "target": "茄子 $32.01", "value":32.01},{"source": "菜豆 $49.66", "target": "絲瓜 $35.36", "value":35.36},{"source": "金針花 $203.9", "target": "毛豆 $65.23", "value":65.23},{"source": "金針花 $203.9", "target": "菜豆 $49.66", "value":49.66},{"source": "金針花 $203.9", "target": "青花菜 $32.86", "value":32.86},{"source": "金針花 $203.9", "target": "金針花 $203.9", "value":203.9},{"source": "金針花 $203.9", "target": "豌豆 $69.64", "value":69.64},{"source": "金針花 $203.9", "target": "南瓜 $20.85", "value":20.85},{"source": "金針花 $203.9", "target": "花椰菜 $89.37", "value":89.37},{"source": "金針花 $203.9", "target": "胡瓜 $25.39", "value":25.39},{"source": "金針花 $203.9", "target": "茄子 $32.01", "value":32.01},{"source": "金針花 $203.9", "target": "絲瓜 $35.36", "value":35.36}]}
+      ;
+    
+     //.cooldownTicks(100)
+      const Graph = ForceGraph()
+      (document.getElementById('graph'))
+        .graphData(gData)
+        .nodeId('id')
+        .nodeVal('value')
+        //.nodeAutoColorBy('group')
+       
+        .linkSource('source')
+        .linkTarget('target')
+        .linkAutoColorBy('source')
+        
+        .cooldownTicks(1)
+        
+        .nodeCanvasObject((node, ctx, globalScale) => {
+          const label = node.id ; //
+          const fontSize = 12/globalScale;
+          ctx.font = `${fontSize}px Sans-Serif`;
+          const textWidth = ctx.measureText(label).width;
+          const bckgDimensions = [textWidth, fontSize].map(n => n + fontSize * 0.2); // some padding
+          ctx.nodeVal = 50;
+          ctx.fillStyle = getColor(Math.floor(Math.random() * 1000));  //'rgba(255, 255, 255, 0.8)' node.id  Math.floor(Math.random() * 1000)
+          //ctx.fillRect(node.x - bckgDimensions[0] / 2, node.y - bckgDimensions[1] / 2, ...bckgDimensions);
+
+          ctx.beginPath(); 
+          ctx.arc(node.x, node.y,parseFloat(Math.sqrt(node.group)), 0, 2 * Math.PI, false); 
+          ctx.fill();
+          
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillStyle = 'rgba(255, 255, 255, 1)';  //'rgba(0, 0, 0, 0)'
+          ctx.fillText(label, node.x, node.y);
+
+          node.__bckgDimensions = bckgDimensions; // to re-use in nodePointerAreaPaint
+        })
+        .nodePointerAreaPaint((node, color, ctx) => {
+          ctx.fillStyle = color;
+          const bckgDimensions = node.__bckgDimensions;
+          bckgDimensions && ctx.fillRect(node.x - bckgDimensions[0] / 2, node.y - bckgDimensions[1] / 2, ...bckgDimensions);
+
+          
+    });
+    // fit to canvas when engine stops
+    Graph.onEngineStop(() => Graph.zoomToFit(10));
+  </script>
+</body>
