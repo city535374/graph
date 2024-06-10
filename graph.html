@@ -8,6 +8,7 @@
 <body>
   <div id="graph"></div>
   <script>
+  fetch('node.json').then(res => res.json()).then(data => {
      // gen a number persistent color from around the palette
     const getColor = n => '#' + ((n * 124680) % Math.pow(2, 24)).toString(16).padStart(6, '0');
 
@@ -59,5 +60,7 @@
     });
     // fit to canvas when engine stops
     Graph.onEngineStop(() => Graph.zoomToFit(10));
+
+     });
   </script>
 </body>
