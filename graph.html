@@ -11,8 +11,10 @@
 
 <body>
  <input type="text" id="myInput" />
+ <button onclick="getValue()">Get Value</button> 
   <div id="graph"></div>
   <script>
+ function getValue() { 
    const input = document.getElementById("myInput");
    const gData = input.value;;
      // gen a number persistent color from around the palette
@@ -64,6 +66,7 @@
     });
     // fit to canvas when engine stops
     Graph.onEngineStop(() => Graph.zoomToFit(10));
+ }
   </script>
 </body>
 </html>
