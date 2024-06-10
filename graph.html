@@ -12,10 +12,13 @@
 <body>
   <div id="graph"></div>
   <script>
+   const queryString = window.location.search;
+   const urlParams = new URLSearchParams(queryString);
+   const gData = urlParams.get('data');
      // gen a number persistent color from around the palette
     const getColor = n => '#' + ((n * 124680) % Math.pow(2, 24)).toString(16).padStart(6, '0');
 
-    const gData = {{nodedata}}      ;
+    //const gData = {{nodedata}}      ;
     
      //.cooldownTicks(100)
       const Graph = ForceGraph()
